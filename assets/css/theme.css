@@ -1,0 +1,585 @@
+/* Theme CSS for Merzol - Light/Dark Mode with 3D Elements */
+
+:root {
+  /* Light Theme Variables */
+  --light-bg: #ffffff;
+  --light-text: #333333;
+  --light-secondary: #666666;
+  --light-accent: #ff0000; /* Red accent color */
+  --light-card-bg: #f8f8f8;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --light-header-bg: #c00;
+  --light-footer-bg: #f5f5f5;
+  
+  /* Dark Theme Variables */
+  --dark-bg: #121212;
+  --dark-text: #f5f5f5;
+  --dark-secondary: #aaaaaa;
+  --dark-accent: #ff3333; /* Brighter red for dark mode */
+  --dark-card-bg: #1e1e1e;
+  --dark-shadow: rgba(255, 0, 0, 0.2);
+  --dark-header-bg: #1a1a1a;
+  --dark-footer-bg: #1a1a1a;
+  
+  /* 3D Effect Variables */
+  --card-depth: 10px;
+  --button-depth: 4px;
+  --hover-lift: -5px;
+  --transition-speed: 0.3s;
+  
+  /* Feature Card Variables */
+  --feature-card-bg-light: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  --feature-card-bg-dark: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+  --feature-card-text: #ffffff;
+}
+
+/* Default Light Theme */
+body {
+  --bg-color: var(--light-bg);
+  --text-color: var(--light-text);
+  --secondary-color: var(--light-secondary);
+  --accent-color: var(--light-accent);
+  --card-bg: var(--light-card-bg);
+  --shadow-color: var(--light-shadow);
+  --header-bg: var(--light-header-bg);
+  --footer-bg: var(--light-footer-bg);
+  
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Dark Theme Class */
+body.dark-theme {
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+  --secondary-color: var(--dark-secondary);
+  --accent-color: var(--dark-accent);
+  --card-bg: var(--dark-card-bg);
+  --shadow-color: var(--dark-shadow);
+  --header-bg: var(--dark-header-bg);
+  --footer-bg: var(--dark-footer-bg);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-container {
+    margin-right: 15px;
+}
+
+.theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover::before {
+    opacity: 0.5;
+}
+
+.theme-toggle i {
+    font-size: 18px;
+    color: white;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.theme-toggle .fa-sun {
+    opacity: 1;
+    position: absolute;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .fa-moon {
+    opacity: 0;
+    position: absolute;
+    transform: rotate(90deg);
+}
+
+.dark-theme .theme-toggle .fa-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.dark-theme .theme-toggle .fa-moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.dark-theme .theme-toggle {
+    background-color: #2a2a3a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .theme-toggle:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Header Styling */
+#xb-header-area {
+  background: linear-gradient(to right, #1a1a1a, #cc0000);
+  transition: background-color var(--transition-speed);
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.xb-header {
+  background-color: transparent !important;
+  transition: background-color var(--transition-speed);
+}
+
+.header-logo img {
+}
+
+.main-menu nav ul li a span {
+  color: #ffffff !important;
+  transition: color var(--transition-speed);
+}
+
+.main-menu nav ul li a:hover span {
+  color: var(--accent-color) !important;
+}
+
+.header-btn .login-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: #1a1a1a;
+    border: 2px solid #444;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.header-btn .login-btn img {
+    filter: invert(1);
+    z-index: 1;
+}
+
+.header-btn .login-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, black, red, black);
+    animation: rotate-border 3s linear infinite;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.header-btn .login-btn:hover {
+    border-color: transparent;
+}
+
+.header-btn .login-btn:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotate-border {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 3D Card Effects */
+.feature-wrap {
+  background: var(--card-bg) !important;
+  border-radius: 15px;
+  box-shadow: 0 var(--card-depth) 20px var(--shadow-color);
+  transform: translateY(0);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), filter 0.5s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  position: relative;
+}
+
+.feature-wrap:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: 0 calc(var(--card-depth) + 15px) 35px rgba(255, 0, 0, 0.25);
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.2));
+  animation: pulse-shadow 1.5s infinite alternate;
+}
+
+.feature-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(255, 0, 0, 0) 60%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+}
+
+.feature-wrap:hover::before {
+  opacity: 1;
+}
+
+/* Feature Cards Styling */
+.xb-item--feature {
+  background: var(--feature-card-bg-light) !important;
+  color: var(--feature-card-text) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 var(--card-depth) 15px rgba(255, 0, 0, 0.2);
+  transition: all var(--transition-speed);
+}
+
+body.dark-theme .xb-item--feature {
+  background: var(--feature-card-bg-dark) !important;
+}
+
+.xb-item--feature:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: 0 calc(var(--card-depth) + 8px) 20px rgba(255, 0, 0, 0.3), 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+.xb-item--feature:hover .xb-item--feature-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+  animation: icon-pulse 1.5s infinite alternate;
+}
+
+@keyframes icon-pulse {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+  }
+}
+
+.xb-item--feature-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, filter 0.5s ease;
+}
+
+.xb-item--feature h4,
+.xb-item--feature p {
+  color: var(--feature-card-text) !important;
+  position: relative;
+  z-index: 2;
+}
+
+.xb-item--feature::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  z-index: 1;
+}
+
+/* Shadow Animation */
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 calc(var(--card-depth) + 15px) 35px rgba(255, 0, 0, 0.25);
+  }
+  100% {
+    box-shadow: 0 calc(var(--card-depth) + 20px) 40px rgba(255, 0, 0, 0.4);
+  }
+}
+
+/* 3D Button Effects */
+.them-btn {
+  position: relative;
+  transform: translateY(0);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 var(--button-depth) 0 rgba(200, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.them-btn:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: 0 calc(var(--button-depth) + 5px) 0 rgba(200, 0, 0, 0.8);
+}
+
+.them-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+  transition: left 0.5s;
+}
+
+.them-btn:hover::after {
+  left: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--bg-color) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.1) 0%, rgba(255, 0, 0, 0) 70%);
+  z-index: 0;
+}
+
+.merzolTitle {
+  color: var(--accent-color) !important;
+  text-shadow: 0 4px 8px var(--shadow-color);
+  font-size: 5rem;
+  letter-spacing: 2px;
+  transition: all var(--transition-speed);
+}
+
+.slogan {
+  color: var(--text-color) !important;
+  transition: color var(--transition-speed);
+}
+
+/* Footer Styling */
+footer {
+  background-color: var(--footer-bg) !important;
+  transition: background-color var(--transition-speed);
+}
+
+.xb-footer-bottom {
+  background: transparent !important;
+  border-color: var(--accent-color) !important;
+  transition: border-color var(--transition-speed);
+}
+
+/* Animation for 3D elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll Dissolve Transitions */
+.dissolve-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.dissolve-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Dissolve for Children */
+.dissolve-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dissolve-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.dissolve-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.dissolve-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.dissolve-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.dissolve-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+.dissolve-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+
+.dissolve-stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ASR Section Enhancements */
+.asr-section {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.5s ease;
+}
+
+.asr-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(0,212,255,0) 100%);
+    z-index: -1;
+}
+
+.sound-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    opacity: 0.3;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+}
+
+.sound-wave-1 {
+    animation: wave1 3s ease-in-out infinite;
+}
+
+.sound-wave-2 {
+    animation: wave2 4s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.sound-wave-3 {
+    animation: wave3 5s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@keyframes wave1 {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1); }
+}
+
+@keyframes wave2 {
+    0%, 100% { transform: scaleY(0.7); }
+    50% { transform: scaleY(1.2); }
+}
+
+@keyframes wave3 {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(0.8); }
+}
+
+.asr-icon {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.asr-icon:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
+}
+
+.dark-theme .asr-section {
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1);
+}
+
+.dark-theme .sound-wave {
+    opacity: 0.5;
+}
+
+.dark-theme .asr-icon:hover {
+    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.8));
+}
+
+/* FAQ Section Styling */
+.faq {
+  background-color: var(--bg-color) !important;
+  transition: background-color var(--transition-speed);
+}
+
+.faq .title {
+  color: var(--text-color) !important;
+  transition: color var(--transition-speed);
+}
+
+.accordion_box .accordion {
+  background-color: var(--card-bg) !important;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 var(--card-depth) 15px var(--shadow-color);
+  transition: all var(--transition-speed);
+  overflow: hidden;
+}
+
+.accordion_box .accordion:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: 0 calc(var(--card-depth) + 8px) 20px var(--shadow-color);
+}
+
+.accordion_box .acc-btn {
+  color: var(--text-color) !important;
+  transition: color var(--transition-speed);
+  position: relative;
+  z-index: 1;
+}
+
+.accordion_box .acc-btn .arrow {
+  color: var(--accent-color) !important;
+}
+
+.accordion_box .acc_body {
+  background-color: var(--card-bg) !important;
+  transition: background-color var(--transition-speed);
+}
+
+.accordion_box .acc_body .content {
+  color: var(--secondary-color) !important;
+  transition: color var(--transition-speed);
+}
+
+.accordion_box .active-block {
+  border-color: var(--accent-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .merzolTitle {
+    font-size: 3.5rem;
+  }
+  
+  :root {
+    --card-depth: 6px;
+    --button-depth: 3px;
+    --hover-lift: -3px;
+  }
+}
