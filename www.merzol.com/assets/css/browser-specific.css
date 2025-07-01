@@ -1,0 +1,305 @@
+/**
+ * Browser-specific CSS fixes
+ * Uses classes added by browser-detect.js
+ */
+
+/* Base styles for all browsers */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Chrome-specific fixes */
+html.chrome .interview-section {
+  /* Chrome tends to handle flexbox well, but may need specific tweaks */
+  display: flex;
+  flex-direction: column;
+}
+
+html.chrome video,
+html.chrome iframe {
+  /* Fix Chrome-specific video display issues */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for Chrome color rendering */
+html.chrome .them-btn {
+  /* Ensure buttons have proper color in Chrome */
+  color: #fff;
+}
+
+html.chrome [style*="var(--color-blue)"] {
+  /* Ensure blue color renders correctly in Chrome */
+  background-color: #0078d7 !important;
+  color: #ffffff !important;
+}
+
+/* Additional Chrome-specific color fixes */
+html.chrome .blue-text,
+html.chrome .blue-accent,
+html.chrome [class*="blue"] {
+  /* Ensure blue elements are properly colored in Chrome */
+  color: #0078d7;
+}
+
+html.chrome .blue-bg,
+html.chrome .blue-background,
+html.chrome [class*="blue-bg"] {
+  /* Ensure blue backgrounds are properly colored in Chrome */
+  background-color: #0078d7;
+}
+
+/* Firefox-specific fixes */
+html.firefox .interview-section {
+  /* Firefox flexbox fixes */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+html.firefox img {
+  /* Fix Firefox image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+html.firefox video,
+html.firefox iframe {
+  /* Fix Firefox video display issues */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safari-specific fixes */
+html.safari .interview-section {
+  /* Safari flexbox fixes */
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  width: 100%;
+}
+
+html.safari img {
+  /* Fix Safari image rendering */
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}
+
+html.safari video,
+html.safari iframe {
+  /* Fix Safari video display issues */
+  max-width: 100%;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Edge-specific fixes */
+html.edge .interview-section {
+  /* Edge flexbox fixes */
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  width: 100%;
+}
+
+html.edge img {
+  /* Fix Edge image rendering */
+  -ms-interpolation-mode: bicubic;
+}
+
+html.edge video,
+html.edge iframe {
+  /* Fix Edge video display issues */
+  max-width: 100%;
+  height: auto;
+}
+
+/* IE-specific fixes (in addition to ie-fixes.css) */
+html.ie .interview-section {
+  /* Additional IE flexbox fixes */
+  position: relative;
+  overflow: hidden;
+}
+
+html.ie img {
+  /* Fix IE image rendering */
+  -ms-interpolation-mode: bicubic;
+}
+
+html.ie video,
+html.ie iframe {
+  /* Fix IE video display issues */
+  width: 100%;
+  height: auto;
+}
+
+/* Fix for flex containers across all browsers */
+.d-flex,
+[class*="d-flex"],
+.flex-container,
+[class*="flex-"] {
+  display: flex;
+}
+
+html.ie .d-flex,
+html.ie [class*="d-flex"],
+html.ie .flex-container,
+html.ie [class*="flex-"] {
+  display: -ms-flexbox;
+}
+
+html.edge .d-flex,
+html.edge [class*="d-flex"],
+html.edge .flex-container,
+html.edge [class*="flex-"] {
+  display: -ms-flexbox;
+}
+
+html.safari .d-flex,
+html.safari [class*="d-flex"],
+html.safari .flex-container,
+html.safari [class*="flex-"] {
+  display: -webkit-flex;
+}
+
+/* Fix for grid containers across all browsers */
+.grid-container,
+[class*="grid-"] {
+  display: grid;
+}
+
+html.ie .grid-container,
+html.ie [class*="grid-"] {
+  display: -ms-grid;
+}
+
+/* Fix for object-fit across all browsers */
+.img-cover,
+img[style*="object-fit: cover"],
+img[style*="object-fit:cover"] {
+  object-fit: cover;
+  object-position: center;
+}
+
+html.ie .img-cover,
+html.ie img[style*="object-fit: cover"],
+html.ie img[style*="object-fit:cover"] {
+  font-family: 'object-fit: cover; object-position: center;';
+}
+
+/* Fix for position: sticky across all browsers */
+.sticky-top,
+.sticky-element,
+[class*="sticky-"] {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+html.ie .sticky-top,
+html.ie .sticky-element,
+html.ie [class*="sticky-"] {
+  position: relative;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767.98px) {
+  .interview-section {
+    padding: 15px !important;
+  }
+  
+  .interview-section video,
+  .interview-section iframe {
+    height: auto !important;
+    min-height: 200px !important;
+  }
+}
+
+/* Media query for tablets */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .interview-section {
+    padding: 20px !important;
+  }
+}
+
+/* Media query for desktops */
+@media (min-width: 992px) {
+  .interview-section {
+    padding: 30px !important;
+  }
+}
+
+/* Fix for CSS animations across all browsers */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  -moz-animation: fadeIn 0.5s ease-in-out;
+  -o-animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fix for transitions across all browsers */
+.transition-element,
+[class*="transition-"] {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+/* Fix for transforms across all browsers */
+.transform-element,
+[class*="transform-"] {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+/* Fix for box-shadow across all browsers */
+.shadow-element,
+[class*="shadow-"] {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for border-radius across all browsers */
+.rounded-element,
+[class*="rounded-"] {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+/* Fix for opacity across all browsers */
+.opacity-element,
+[class*="opacity-"] {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}

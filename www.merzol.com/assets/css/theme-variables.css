@@ -1,0 +1,170 @@
+/**
+ * Theme Variables CSS
+ * This file defines CSS variables for the dark theme
+ * and ensures they're properly applied across all browsers
+ */
+
+/* Base theme variables */
+:root {
+    /* Dark theme colors */
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --primary-text: #ffffff;
+    --secondary-text: #e0e0e0;
+    --accent-color: #ffffff;
+    --accent-hover: #ffffff;
+    --border-color: #333333;
+    --input-bg: #2d2d2d;
+    --card-bg: #1e1e1e;
+    --modal-bg: #1e1e1e;
+    --tooltip-bg: #1e1e1e;
+    --scrollbar-track: #1a1a1a;
+    --scrollbar-thumb: #444444;
+    --scrollbar-thumb-hover: #555555;
+    
+    /* Common variable names used in frameworks */
+    --bs-body-bg: var(--background-color);
+    --bs-body-color: var(--text-color);
+    --body-bg: var(--background-color);
+    --body-color: var(--text-color);
+    
+    /* Force dark color scheme */
+    color-scheme: dark;
+}
+
+/* Ensure variables are applied to html and body */
+html, body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Apply variables to common UI elements */
+.bg-light, .bg-white, [class*="bg-light"], [class*="bg-white"] {
+    background-color: var(--secondary-bg) !important;
+}
+
+.text-dark, [class*="text-dark"] {
+    color: var(--secondary-text) !important;
+}
+
+/* Apply variables to borders */
+.border, [class*="border"] {
+    border-color: var(--border-color) !important;
+}
+
+/* Apply variables to inputs and form elements */
+input, select, textarea, .form-control {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Apply variables to cards */
+.card, [class*="card"] {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Apply variables to modals and dialogs */
+.modal, .modal-content, .popover, .tooltip {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Apply variables to links */
+a {
+    color: var(--accent-color) !important;
+}
+
+a:hover {
+    color: var(--accent-hover) !important;
+}
+
+/* Apply variables to buttons */
+.btn-light, .btn-white {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Apply variables to tables */
+table, th, td {
+    border-color: var(--border-color) !important;
+}
+
+th {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+tr:nth-child(even) {
+    background-color: var(--primary-bg) !important;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--secondary-bg) !important;
+}
+
+/* Apply variables to code blocks */
+pre, code {
+    background-color: var(--input-bg) !important;
+    color: var(--secondary-text) !important;
+}
+
+/* Apply variables to blockquotes */
+blockquote {
+    background-color: var(--card-bg) !important;
+    border-left-color: var(--border-color) !important;
+    color: var(--secondary-text) !important;
+}
+
+/* Apply variables to horizontal rules */
+hr {
+    border-color: var(--border-color) !important;
+}
+
+/* Apply variables to focus outlines */
+:focus {
+    outline-color: var(--accent-color) !important;
+}
+
+/* Apply variables to scrollbars */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Ensure dark theme is applied regardless of system preference */
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Force dark theme colors */
+        --background-color: #121212 !important;
+        --text-color: #ffffff !important;
+        --primary-bg: #121212 !important;
+        --secondary-bg: #1e1e1e !important;
+        --primary-text: #ffffff !important;
+        --secondary-text: #e0e0e0 !important;
+        color-scheme: dark !important;
+    }
+    
+    html, body {
+        background-color: var(--background-color) !important;
+        color: var(--text-color) !important;
+    }
+}
