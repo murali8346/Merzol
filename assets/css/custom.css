@@ -1,0 +1,75 @@
+/* Custom CSS - Optimized for Merzol.com */
+
+/* Additional optimized styles */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --info-color: #0dcaf0;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+}
+
+/* Improved typography */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--dark-color);
+  line-height: 1.6;
+  background-color: var(--light-color);
+}
+
+/* Enhanced buttons */
+.them-btn {
+  transition: all 0.3s ease;
+}
+
+.them-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved card styles */
+.service-card, .help-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.service-card:hover, .help-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+/* Improved animations */
+.fadeInUp, .fadeInRight, .fadeInLeft {
+  animation-duration: 0.8s;
+}
+
+/* Footer enhancements */
+.footer-section {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.footer-section a {
+  color: var(--light-color);
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
